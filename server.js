@@ -1,20 +1,22 @@
-// setup
+var cluster = require('cluster');
+var numCPUs = require('os').cpus().length;
+var start = require('./start');
 
-var env             = process.env.NODE_ENV || 'dev';
-var port            = process.env.PORT || 8080;
-var express         = require('express');
-var app             = express();
+if (cluster.isMaster) {
 
-// configuration
+  console.log('start cluster with %s workers', numCPUs);
 
-app.use(express.static(__dirname + "/public"));
+  // Fork workers.
+  for (var i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
 
-// routes
+  cluster.on('exit', function(worker, code, signal) {
+    console.log('worker ' + worker.process.pid + ' died');
+  });
+  
+} else {
+  
+  start();
 
-require('./app/routes.js')(app);
-
-// launch
-
-app.listen(port, function () {
-  console.log('%s listening at port %s', app.name, port);
-});
+}
