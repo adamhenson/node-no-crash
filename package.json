@@ -1,0 +1,25 @@
+{
+  "name": "node-no-crash",
+  "main": "server.js",
+  "author": "Hensonism <adam@hensonism.com>",
+  "description": "Example method of Node server crash prevention.",
+  "contributors": [
+    {
+      "name": "Adam Henson",
+      "email": "adam@hensonism.com"
+    }
+  ],
+  "scripts": {
+    "start": "server.js"
+  },
+  "dependencies": {
+    "express": "^4.10.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamhenson/node-no-crash.git"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
