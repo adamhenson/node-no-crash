@@ -1,7 +1,4 @@
 node-no-crash
 =============
 
-> Example method to prevent server crashing from uncaught exceptions, using the cluster module
-
-## Notes
-I discovered that Express sessions don't support clusters and only work on a single instance :( [read one report on stackoverflow](http://stackoverflow.com/questions/17626279/nodejs-clustering-and-expressjs-sessions).
+> Example method to handle uncaught exceptions. Allow uncaught exception to crash the server then restart using the "forever" module. In this case I'm actually using the ["forever-monitor"](https://github.com/nodejitsu/forever-monitor).
